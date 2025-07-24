@@ -6,7 +6,8 @@ const projects = [
     title: "Laxmi Foods",
     description:
       "Professional e-commerce site for wholesalers with inventory management, order processing, and customer portal.",
-    image: "https://cdn.builder.io/api/v1/image/assets%2Fb0b6ec50434c41f286f6cf2e72fc2b41%2Fc4bfacd8ec484569807c3c47324dc0c7?format=webp&width=800",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2Fb0b6ec50434c41f286f6cf2e72fc2b41%2Fc4bfacd8ec484569807c3c47324dc0c7?format=webp&width=800",
     tech: ["React.js", "Node.js", "MySQL", "TailwindCSS"],
     github: "https://github.com/Nirmal-AIM/ecommerce-site",
     live: "#",
@@ -17,7 +18,8 @@ const projects = [
     title: "Gudlavalleru Polytechnic College",
     description:
       "Complete institutional website with course information, faculty details, admission process, and student portal.",
-    image: "https://cdn.builder.io/api/v1/image/assets%2Fb0b6ec50434c41f286f6cf2e72fc2b41%2F137b459070764bc5be409f7cdebb40db?format=webp&width=800",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2Fb0b6ec50434c41f286f6cf2e72fc2b41%2F137b459070764bc5be409f7cdebb40db?format=webp&width=800",
     tech: ["React.js", "Firebase", "TailwindCSS"],
     github: "#",
     live: "https://gudlavallerucollege.online",
@@ -28,7 +30,8 @@ const projects = [
     title: "AANMVVRSR Hostel Management",
     description:
       "Hostel management system with room booking, student records, fee management, and administrative features.",
-    image: "https://cdn.builder.io/api/v1/image/assets%2Fb0b6ec50434c41f286f6cf2e72fc2b41%2F02b5fbb427724ea097a09ee96c326dd4?format=webp&width=800",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2Fb0b6ec50434c41f286f6cf2e72fc2b41%2F02b5fbb427724ea097a09ee96c326dd4?format=webp&width=800",
     tech: ["React.js", "PHP", "MySQL", "Bootstrap"],
     github: "#",
     live: "https://aanmvvrsrhostel.com",
