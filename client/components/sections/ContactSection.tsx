@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
-import { 
-  Mail, 
-  Github, 
-  Linkedin, 
-  MapPin, 
+import {
+  Mail,
+  Github,
+  Linkedin,
+  MapPin,
   Send,
   MessageSquare,
-  Phone
+  Phone,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -15,14 +15,14 @@ const contactInfo = [
     icon: Mail,
     label: "Email",
     value: "nirmalkollipara8688@gmail.com",
-    link: "mailto:nirmalkollipara8688@gmail.com"
+    link: "mailto:nirmalkollipara8688@gmail.com",
   },
   {
     icon: MapPin,
     label: "Location",
     value: "Guntur, India",
-    link: "#"
-  }
+    link: "#",
+  },
 ];
 
 const socialLinks = [
@@ -31,39 +31,43 @@ const socialLinks = [
     label: "GitHub",
     username: "@Nirmal-AIM",
     link: "https://github.com/Nirmal-AIM",
-    color: "hover:text-gray-400"
+    color: "hover:text-gray-400",
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
     username: "nirmal-kollipara",
     link: "https://www.linkedin.com/in/nirmal-kollipara-910230311/",
-    color: "hover:text-blue-400"
-  }
+    color: "hover:text-blue-400",
+  },
 ];
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Create mailto link with form data
-    const subject = encodeURIComponent(formData.subject || 'Website Inquiry');
+    const subject = encodeURIComponent(formData.subject || "Website Inquiry");
     const body = encodeURIComponent(
-      `Hi Nirmal,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      `Hi Nirmal,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`,
     );
-    window.open(`mailto:nirmalkollipara8688@gmail.com?subject=${subject}&body=${body}`);
+    window.open(
+      `mailto:nirmalkollipara8688@gmail.com?subject=${subject}&body=${body}`,
+    );
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
@@ -81,7 +85,8 @@ export default function ContactSection() {
             Let's Work Together
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Ready to start your next project? Get in touch and let's create something amazing together.
+            Ready to start your next project? Get in touch and let's create
+            something amazing together.
           </p>
           <div className="w-24 h-1 bg-primary mx-auto rounded-full mt-6" />
         </motion.div>
@@ -100,9 +105,10 @@ export default function ContactSection() {
                 Get in Touch
               </h3>
               <p className="text-muted-foreground mb-8 leading-relaxed">
-                I'm always excited to discuss new projects and opportunities. 
-                Whether you need a complete website, want to improve your existing site, 
-                or just have questions about web development, feel free to reach out!
+                I'm always excited to discuss new projects and opportunities.
+                Whether you need a complete website, want to improve your
+                existing site, or just have questions about web development,
+                feel free to reach out!
               </p>
             </div>
 
@@ -121,7 +127,9 @@ export default function ContactSection() {
                     <info.icon className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <p className="text-sm text-muted-foreground">{info.label}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {info.label}
+                    </p>
                     {info.link !== "#" ? (
                       <a
                         href={info.link}
@@ -130,7 +138,9 @@ export default function ContactSection() {
                         {info.value}
                       </a>
                     ) : (
-                      <p className="text-foreground font-medium">{info.value}</p>
+                      <p className="text-foreground font-medium">
+                        {info.value}
+                      </p>
                     )}
                   </div>
                 </motion.div>
@@ -186,11 +196,14 @@ export default function ContactSection() {
               <MessageSquare className="w-6 h-6 text-primary" />
               Send a Message
             </h3>
-            
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-foreground mb-2"
+                  >
                     Your Name
                   </label>
                   <input
@@ -205,7 +218,10 @@ export default function ContactSection() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-foreground mb-2"
+                  >
                     Email Address
                   </label>
                   <input
@@ -220,9 +236,12 @@ export default function ContactSection() {
                   />
                 </div>
               </div>
-              
+
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
+                <label
+                  htmlFor="subject"
+                  className="block text-sm font-medium text-foreground mb-2"
+                >
                   Subject
                 </label>
                 <input
@@ -235,9 +254,12 @@ export default function ContactSection() {
                   placeholder="Project Discussion"
                 />
               </div>
-              
+
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-foreground mb-2"
+                >
                   Message
                 </label>
                 <textarea
@@ -251,7 +273,7 @@ export default function ContactSection() {
                   placeholder="Tell me about your project..."
                 />
               </div>
-              
+
               <motion.button
                 type="submit"
                 whileHover={{ scale: 1.02 }}

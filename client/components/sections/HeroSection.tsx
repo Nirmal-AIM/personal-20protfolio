@@ -6,7 +6,7 @@ export default function HeroSection() {
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Animated background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-secondary/20" />
-      
+
       {/* Floating particles animation */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(20)].map((_, i) => (
@@ -72,11 +72,16 @@ export default function HeroSection() {
             className="pt-8"
           >
             <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(124, 58, 237, 0.3)" }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 10px 30px rgba(124, 58, 237, 0.3)",
+              }}
               whileTap={{ scale: 0.95 }}
               className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg"
               onClick={() => {
-                document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                document
+                  .getElementById("about")
+                  ?.scrollIntoView({ behavior: "smooth" });
               }}
             >
               View My Work

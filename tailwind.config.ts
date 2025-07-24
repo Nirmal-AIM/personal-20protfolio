@@ -110,12 +110,13 @@ export default {
             transform: "translateX(0)",
           },
         },
-        "glow": {
+        glow: {
           "0%, 100%": {
             boxShadow: "0 0 5px hsl(var(--primary))",
           },
           "50%": {
-            boxShadow: "0 0 20px hsl(var(--primary)), 0 0 30px hsl(var(--primary))",
+            boxShadow:
+              "0 0 20px hsl(var(--primary)), 0 0 30px hsl(var(--primary))",
           },
         },
       },
@@ -125,7 +126,7 @@ export default {
         "fade-in": "fade-in 0.6s ease-out",
         "slide-in-left": "slide-in-left 0.6s ease-out",
         "slide-in-right": "slide-in-right 0.6s ease-out",
-        "glow": "glow 2s ease-in-out infinite",
+        glow: "glow 2s ease-in-out infinite",
       },
     },
   },

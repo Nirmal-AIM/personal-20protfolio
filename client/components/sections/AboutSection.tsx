@@ -2,31 +2,38 @@ import { motion } from "framer-motion";
 import { Code, Palette, Rocket, Users } from "lucide-react";
 
 const techStack = [
-  "React.js", "Next.js", "TailwindCSS", "Node.js", 
-  "PHP", "MySQL", "Firebase", "Git", "Figma"
+  "React.js",
+  "Next.js",
+  "TailwindCSS",
+  "Node.js",
+  "PHP",
+  "MySQL",
+  "Firebase",
+  "Git",
+  "Figma",
 ];
 
 const achievements = [
   {
     icon: Code,
     title: "50+ Projects",
-    description: "Successfully delivered websites across various industries"
+    description: "Successfully delivered websites across various industries",
   },
   {
     icon: Users,
     title: "Happy Clients",
-    description: "Building budget-friendly, professional solutions"
+    description: "Building budget-friendly, professional solutions",
   },
   {
     icon: Rocket,
     title: "Fast Delivery",
-    description: "Quick turnaround times without compromising quality"
+    description: "Quick turnaround times without compromising quality",
   },
   {
     icon: Palette,
     title: "Creative Design",
-    description: "Modern, responsive designs that stand out"
-  }
+    description: "Modern, responsive designs that stand out",
+  },
 ];
 
 export default function AboutSection() {
@@ -57,17 +64,20 @@ export default function AboutSection() {
           >
             <div className="prose prose-lg prose-invert max-w-none">
               <p className="text-lg text-muted-foreground leading-relaxed">
-                I started my freelancing journey during my diploma final year, 
-                driven by passion for creating digital solutions. My focus is on 
-                building <span className="text-primary font-semibold">budget-friendly, 
-                professional React-based websites</span> that help businesses establish 
-                their online presence effectively.
+                I started my freelancing journey during my diploma final year,
+                driven by passion for creating digital solutions. My focus is on
+                building{" "}
+                <span className="text-primary font-semibold">
+                  budget-friendly, professional React-based websites
+                </span>{" "}
+                that help businesses establish their online presence
+                effectively.
               </p>
-              
+
               <p className="text-lg text-muted-foreground leading-relaxed">
-                From e-commerce platforms to institutional websites, I bring creative 
-                solutions to diverse industries while maintaining high standards of 
-                quality and performance.
+                From e-commerce platforms to institutional websites, I bring
+                creative solutions to diverse industries while maintaining high
+                standards of quality and performance.
               </p>
             </div>
 
@@ -109,9 +119,9 @@ export default function AboutSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.05,
-                  boxShadow: "0 10px 30px rgba(124, 58, 237, 0.2)"
+                  boxShadow: "0 10px 30px rgba(124, 58, 237, 0.2)",
                 }}
                 className="bg-card border border-border rounded-xl p-6 text-center hover:border-primary/30 transition-all duration-300 group"
               >

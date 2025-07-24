@@ -4,34 +4,37 @@ import { ExternalLink, Github, Eye } from "lucide-react";
 const projects = [
   {
     title: "Laxmi Foods",
-    description: "Professional e-commerce site for wholesalers with inventory management, order processing, and customer portal.",
+    description:
+      "Professional e-commerce site for wholesalers with inventory management, order processing, and customer portal.",
     image: "/placeholder.svg",
     tech: ["React.js", "Node.js", "MySQL", "TailwindCSS"],
     github: "https://github.com/Nirmal-AIM/ecommerce-site",
     live: "#",
     category: "E-commerce",
-    featured: true
+    featured: true,
   },
   {
     title: "Gudlavalleru Polytechnic College",
-    description: "Complete institutional website with course information, faculty details, admission process, and student portal.",
+    description:
+      "Complete institutional website with course information, faculty details, admission process, and student portal.",
     image: "/placeholder.svg",
     tech: ["React.js", "Firebase", "TailwindCSS"],
     github: "#",
     live: "https://gudlavallerucollege.online",
     category: "Institutional",
-    featured: true
+    featured: true,
   },
   {
     title: "AANMVVRSR Hostel Management",
-    description: "Hostel management system with room booking, student records, fee management, and administrative features.",
+    description:
+      "Hostel management system with room booking, student records, fee management, and administrative features.",
     image: "/placeholder.svg",
     tech: ["React.js", "PHP", "MySQL", "Bootstrap"],
     github: "#",
     live: "https://aanmvvrsrhostel.com",
     category: "Management System",
-    featured: true
-  }
+    featured: true,
+  },
 ];
 
 export default function ProjectsSection() {
@@ -49,7 +52,8 @@ export default function ProjectsSection() {
             Featured Projects
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A showcase of recent work demonstrating expertise across various industries
+            A showcase of recent work demonstrating expertise across various
+            industries
           </p>
           <div className="w-24 h-1 bg-primary mx-auto rounded-full mt-6" />
         </motion.div>
@@ -64,7 +68,7 @@ export default function ProjectsSection() {
               viewport={{ once: true }}
               whileHover={{ y: -10 }}
               className={`bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/30 transition-all duration-300 group ${
-                project.featured ? 'lg:col-span-1' : ''
+                project.featured ? "lg:col-span-1" : ""
               }`}
             >
               {/* Project Image */}
@@ -75,7 +79,7 @@ export default function ProjectsSection() {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
+
                 {/* Overlay Actions */}
                 <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <motion.a
@@ -101,7 +105,7 @@ export default function ProjectsSection() {
                     </motion.a>
                   )}
                 </div>
-                
+
                 {/* Category Badge */}
                 <div className="absolute top-4 left-4">
                   <span className="bg-primary/90 text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
@@ -115,7 +119,7 @@ export default function ProjectsSection() {
                 <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
                   {project.title}
                 </h3>
-                
+
                 <p className="text-muted-foreground mb-4 leading-relaxed">
                   {project.description}
                 </p>
@@ -145,7 +149,7 @@ export default function ProjectsSection() {
                     <ExternalLink className="w-4 h-4" />
                     Live Demo
                   </motion.a>
-                  
+
                   {project.github !== "#" && (
                     <motion.a
                       href={project.github}
@@ -177,7 +181,7 @@ export default function ProjectsSection() {
             whileTap={{ scale: 0.95 }}
             className="bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border hover:border-primary/30 px-8 py-4 rounded-lg font-semibold transition-all duration-300"
             onClick={() => {
-              window.open('https://github.com/Nirmal-AIM', '_blank');
+              window.open("https://github.com/Nirmal-AIM", "_blank");
             }}
           >
             View All Projects on GitHub
