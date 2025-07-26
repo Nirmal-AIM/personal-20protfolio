@@ -21,7 +21,7 @@ const projects = [
     image:
       "https://cdn.builder.io/api/v1/image/assets%2Fb0b6ec50434c41f286f6cf2e72fc2b41%2F137b459070764bc5be409f7cdebb40db?format=webp&width=800",
     tech: ["React.js", "Firebase", "TailwindCSS"],
-    github: "#",
+    github: "https://github.com/Nirmal-AIM/my-react-project",
     live: "https://gudlavallerucollege.online",
     category: "Institutional",
     featured: true,
