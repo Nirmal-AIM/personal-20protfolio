@@ -27,6 +27,18 @@ const projects = [
     featured: true,
 },
   {
+    title: "Portfolio Website Template",
+    description:
+      "A customizable portfolio template built with React and Framer Motion, featuring smooth animations, dark mode, and responsive design for professionals.",
+    image:
+      "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800",
+    tech: ["React.js", "Framer Motion", "TailwindCSS", "TypeScript"],
+    github: "https://github.com/Nirmal-AIM/portfolio-template",
+    live: "https://portfolio-template-demo.vercel.app",
+    category: "Template",
+    featured: true,
+  },
+  {
     title: "Gudlavalleru Polytechnic College",
     description:
       "Complete institutional website with course information, faculty details, admission process, and student portal.",
