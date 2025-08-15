@@ -10,7 +10,7 @@ const projects = [
       "https://cdn.builder.io/api/v1/image/assets%2Fb0b6ec50434c41f286f6cf2e72fc2b41%2Fc4bfacd8ec484569807c3c47324dc0c7?format=webp&width=800",
     tech: ["React.js", "Node.js", "MySQL", "TailwindCSS"],
     github: "https://github.com/Nirmal-AIM/ecommerce-site",
-    live: "https://laxmistore.vercel.app/",
+    live: "https://laxmistore.vercel.app",
     category: "E-commerce",
     featured: true,
   },
