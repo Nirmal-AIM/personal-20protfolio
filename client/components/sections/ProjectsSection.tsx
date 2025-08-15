@@ -19,7 +19,7 @@ const projects = [
     description:
       "A modern and responsive landing page for AnuGrow Coaching, featuring consultation booking, service highlights, and a clean UI for user engagement.",
     image:
-"C:/UsersNIRMAL'S LOQOneDrive/Pictures/Screenshots/Screenshot 2025-08-15 124634.png",
+    "public/Screenshot 2025-08-15 124634.png",
     tech: ["React.js", "TailwindCSS", "Resend API"],
     github: "https://github.com/Nirmal-AIM/anugrow-landing-page", // Replace with your actual repo
     live: "https://v0-image-analysis-nine-delta-94.vercel.app/",
