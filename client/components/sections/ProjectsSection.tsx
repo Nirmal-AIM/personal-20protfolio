@@ -19,11 +19,11 @@ const projects = [
     description:
       "A modern and responsive landing page for AnuGrow Coaching, featuring consultation booking, service highlights, and a clean UI for user engagement.",
     image:
-    "public/Screenshot 2025-08-15 124634.png",
+      "/Screenshot 2025-08-15 124634.png",
     tech: ["React.js", "TailwindCSS", "Resend API"],
     github: "https://github.com/Nirmal-AIM/anugrow-landing-page", // Replace with your actual repo
     live: "https://v0-image-analysis-nine-delta-94.vercel.app/",
-    category: "Business / Coaching",
+    category: "Business",
     featured: true,
 },
   {
@@ -48,6 +48,18 @@ const projects = [
     github: "#",
     live: "https://aanmvvrsrhostel.com",
     category: "Management System",
+    featured: true,
+  },
+  {
+    title: "Personal Portfolio Website",
+    description:
+      "A modern, responsive portfolio website built with React and TailwindCSS, featuring smooth animations, dark mode, and professional design.",
+    image:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+    tech: ["React.js", "TypeScript", "TailwindCSS", "Framer Motion"],
+    github: "https://github.com/Nirmal-AIM/personal-portfolio",
+    live: "https://your-portfolio-url.com",
+    category: "Portfolio",
     featured: true,
   },
 
