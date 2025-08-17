@@ -27,9 +27,9 @@ export function MobileButton({
   };
 
   const sizeClasses = {
-    sm: 'px-4 py-2.5 text-base min-h-[44px]',
-    md: 'px-5 py-3 text-base min-h-[48px]',
-    lg: 'px-7 py-4 text-lg min-h-[52px]'
+    sm: 'px-3 py-2 text-sm min-h-[40px]',
+    md: 'px-4 py-2.5 text-sm min-h-[44px]',
+    lg: 'px-6 py-3 text-base min-h-[48px]'
   };
 
   const baseClasses = [
@@ -109,12 +109,12 @@ export function MobileText({
   };
 
   const sizeClasses = {
-    xs: 'text-sm sm:text-base',
-    sm: 'text-base sm:text-lg',
-    base: 'text-base sm:text-lg md:text-xl',
-    lg: 'text-lg sm:text-xl md:text-2xl',
-    xl: 'text-xl sm:text-2xl md:text-3xl',
-    '2xl': 'text-2xl sm:text-3xl md:text-4xl'
+    xs: 'text-xs sm:text-sm',
+    sm: 'text-sm sm:text-base',
+    base: 'text-sm sm:text-base md:text-lg',
+    lg: 'text-base sm:text-lg md:text-xl',
+    xl: 'text-lg sm:text-xl md:text-2xl',
+    '2xl': 'text-xl sm:text-2xl md:text-3xl'
   };
 
   const baseClasses = [
