@@ -25,7 +25,7 @@ const projects = [
     live: "https://v0-image-analysis-nine-delta-94.vercel.app/",
     category: "Business",
     featured: true,
-},
+  },
   {
     title: "Portfolio Website Template",
     description:
@@ -105,6 +105,10 @@ export default function ProjectsSection() {
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  onError={(e) => {
+                    console.error('Image failed to load:', project.image);
+                    e.currentTarget.src = '/placeholder.svg';
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
