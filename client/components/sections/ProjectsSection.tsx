@@ -27,6 +27,18 @@ const projects = [
     featured: true,
 },
   {
+    title: "Portfolio Website Template",
+    description:
+      "A customizable portfolio template built with React and Framer Motion, featuring smooth animations, dark mode, and responsive design for professionals.",
+    image:
+      "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800",
+    tech: ["React.js", "Framer Motion", "TailwindCSS", "TypeScript"],
+    github: "https://github.com/Nirmal-AIM/portfolio-template",
+    live: "https://portfolio-template-demo.vercel.app",
+    category: "Template",
+    featured: true,
+  },
+  {
     title: "Gudlavalleru Polytechnic College",
     description:
       "Complete institutional website with course information, faculty details, admission process, and student portal.",
@@ -50,19 +62,7 @@ const projects = [
     category: "Management System",
     featured: true,
   },
-  {
-    title: "Personal Portfolio Website",
-    description:
-      "A modern, responsive portfolio website built with React and TailwindCSS, featuring smooth animations, dark mode, and professional design.",
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-    tech: ["React.js", "TypeScript", "TailwindCSS", "Framer Motion"],
-    github: "https://github.com/Nirmal-AIM/personal-portfolio",
-    live: "https://your-portfolio-url.com",
-    category: "Portfolio",
-    featured: true,
-  },
-
+ 
 ];
 
 export default function ProjectsSection() {
