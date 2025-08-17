@@ -67,26 +67,26 @@ const projects = [
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="py-16 sm:py-20 lg:py-32 animate-on-scroll">
-      <div className="container mx-auto px-4 sm:px-6">
+    <section id="projects" className="mobile-section animate-on-scroll">
+      <div className="mobile-container">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mobile-text-center mb-12 sm:mb-16 md:mb-20"
         >
-                                           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent mb-4 sm:mb-6">
-              Featured Projects
-            </h2>
-           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4 sm:px-0">
-             A showcase of recent work demonstrating expertise across various
-             industries
-           </p>
-          <div className="w-24 h-1 bg-primary mx-auto rounded-full mt-6" />
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent mb-6 sm:mb-8 md:mb-10 leading-tight">
+            Featured Projects
+          </h2>
+          <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            A showcase of recent work demonstrating expertise across various
+            industries
+          </p>
+          <div className="w-20 sm:w-24 md:w-32 h-1 sm:h-1.5 bg-primary mx-auto rounded-full mt-8 sm:mt-10" />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
+        <div className="mobile-grid">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -100,16 +100,14 @@ export default function ProjectsSection() {
               }}
               viewport={{ once: true, margin: "-50px" }}
               whileHover={{ 
-                y: -15,
+                y: -8,
                 scale: 1.02,
                 transition: { duration: 0.3 }
               }}
-              className={`bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/30 transition-all duration-300 group relative ${
-                project.featured ? "lg:col-span-1" : ""
-              }`}
+              className="mobile-card group relative"
             >
               {/* Glowing border effect on hover */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/20 via-purple-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+              <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-r from-primary/20 via-purple-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
               
               {/* Project Image */}
               <div className="relative overflow-hidden bg-secondary/20 aspect-video">
@@ -126,64 +124,64 @@ export default function ProjectsSection() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                {/* Enhanced Overlay Actions */}
-                <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                {/* Enhanced Overlay Actions - Mobile Optimized */}
+                <div className="absolute inset-0 flex items-center justify-center gap-4 sm:gap-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <motion.a
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.2, rotate: 5 }}
+                    whileHover={{ scale: 1.1, rotate: 5 }}
                     whileTap={{ scale: 0.9 }}
-                    className="bg-primary text-primary-foreground p-3 rounded-full hover:bg-primary/90 transition-colors shadow-lg"
+                    className="bg-primary text-primary-foreground p-3 sm:p-4 rounded-full hover:bg-primary/90 transition-colors shadow-lg touch-manipulation touch-target"
                   >
-                    <Eye className="w-5 h-5" />
+                    <Eye className="w-5 h-5 sm:w-6 sm:h-6" />
                   </motion.a>
                   {project.github !== "#" && (
                     <motion.a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.2, rotate: -5 }}
+                      whileHover={{ scale: 1.1, rotate: -5 }}
                       whileTap={{ scale: 0.9 }}
-                      className="bg-secondary text-secondary-foreground p-3 rounded-full hover:bg-secondary/90 transition-colors shadow-lg"
+                      className="bg-secondary text-secondary-foreground p-3 sm:p-4 rounded-full hover:bg-secondary/90 transition-colors shadow-lg touch-manipulation touch-target"
                     >
-                      <Github className="w-5 h-5" />
+                      <Github className="w-5 h-5 sm:w-6 sm:h-6" />
                     </motion.a>
                   )}
                 </div>
 
-                {/* Enhanced Category Badge */}
+                {/* Enhanced Category Badge - Mobile Optimized */}
                 <motion.div 
-                  className="absolute top-4 left-4"
-                  whileHover={{ scale: 1.1 }}
+                  className="absolute top-3 sm:top-4 left-3 sm:left-4"
+                  whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <span className="bg-primary/90 text-primary-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm shadow-lg">
+                  <span className="bg-primary/90 text-primary-foreground px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-sm sm:text-base font-medium backdrop-blur-sm shadow-lg">
                     {project.category}
                   </span>
                 </motion.div>
               </div>
 
-                             {/* Project Content */}
-               <div className="p-4 sm:p-6 relative z-10">
-                                 <motion.h3 
-                   className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3 group-hover:text-primary transition-colors duration-300"
-                  whileHover={{ x: 5 }}
+              {/* Project Content - Mobile Optimized */}
+              <div className="p-5 sm:p-6 md:p-8 relative z-10">
+                <motion.h3 
+                  className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-3 sm:mb-4 group-hover:text-primary transition-colors duration-300 leading-tight"
+                  whileHover={{ x: 3 }}
                   transition={{ duration: 0.2 }}
                 >
                   {project.title}
                 </motion.h3>
 
-                                 <p className="text-sm sm:text-base text-muted-foreground mb-3 sm:mb-4 leading-relaxed">
-                   {project.description}
-                 </p>
+                <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-4 sm:mb-6 leading-relaxed">
+                  {project.description}
+                </p>
 
-                                 {/* Enhanced Tech Stack */}
-                 <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
+                {/* Enhanced Tech Stack - Mobile Optimized */}
+                <div className="flex flex-wrap gap-2 sm:gap-2.5 md:gap-3 mb-5 sm:mb-6 md:mb-8">
                   {project.tech.map((tech, techIndex) => (
                     <motion.span
                       key={tech}
-                                             className="bg-secondary/50 text-foreground px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm border border-border hover:border-primary/50 transition-colors"
+                      className="bg-secondary/50 text-foreground px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 rounded-lg text-sm sm:text-base border border-border hover:border-primary/50 transition-colors"
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       transition={{ 
@@ -203,17 +201,17 @@ export default function ProjectsSection() {
                   ))}
                 </div>
 
-                                 {/* Enhanced Project Links */}
-                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                {/* Enhanced Project Links - Mobile Optimized */}
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-5">
                   <motion.a
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                                         className="flex items-center gap-2 bg-primary text-primary-foreground px-3 sm:px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-all duration-300 flex-1 justify-center shadow-lg hover:shadow-xl text-sm sm:text-base"
+                    whileHover={{ scale: 1.02, y: -1 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="mobile-button bg-primary text-primary-foreground hover:bg-primary/90 flex items-center justify-center gap-3 flex-1 shadow-lg hover:shadow-xl text-base sm:text-lg"
                   >
-                    <ExternalLink className="w-4 h-4" />
+                    <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
                     Live Demo
                   </motion.a>
 
@@ -222,11 +220,12 @@ export default function ProjectsSection() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex items-center gap-2 bg-secondary text-secondary-foreground px-3 sm:px-4 py-2 rounded-lg font-medium hover:bg-secondary/90 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base"
+                      whileHover={{ scale: 1.02, y: -1 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="mobile-button bg-secondary text-secondary-foreground hover:bg-secondary/90 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl text-base sm:text-lg"
                     >
-                      <Github className="w-4 h-4" />
+                      <Github className="w-4 h-4 sm:w-5 sm:h-5" />
+                      Code
                     </motion.a>
                   )}
                 </div>
@@ -235,18 +234,18 @@ export default function ProjectsSection() {
           ))}
         </div>
 
-        {/* View More Button */}
+        {/* View More Button - Mobile Optimized */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mt-12"
+          className="text-center mt-12 sm:mt-16"
         >
           <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border hover:border-primary/30 px-8 py-4 rounded-lg font-semibold transition-all duration-300"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="mobile-button bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border hover:border-primary/30 px-8 sm:px-10 py-4 sm:py-5 shadow-lg hover:shadow-xl text-base sm:text-lg"
             onClick={() => {
               window.open("https://github.com/Nirmal-AIM", "_blank");
             }}
