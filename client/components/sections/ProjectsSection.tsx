@@ -14,7 +14,7 @@ const projects = [
     category: "E-commerce",
     featured: true,
   },
- {
+  {
     title: "AnuGrow Coaching Landing Page",
     description:
       "A modern and responsive landing page for AnuGrow Coaching, featuring consultation booking, service highlights, and a clean UI for user engagement.",
