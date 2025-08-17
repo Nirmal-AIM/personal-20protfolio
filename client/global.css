@@ -163,6 +163,26 @@ body {
   backface-visibility: hidden;
 }
 
+/* Mobile-specific optimizations */
+@media (max-width: 640px) {
+  /* Reduce animation complexity on mobile for better performance */
+  .animate-on-scroll {
+    will-change: auto;
+  }
+  
+  /* Optimize touch interactions */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improve text readability on small screens */
+  p, h1, h2, h3, h4, h5, h6 {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+}
+
 /* Smooth section transitions */
 section {
   scroll-margin-top: 2rem;
