@@ -115,9 +115,32 @@
   background: hsl(var(--primary) / 0.5);
 }
 
-/* Smooth scrolling */
+/* Enhanced smooth scrolling */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+}
+
+body {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Smooth scrolling for all elements */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Optimize animations during scroll */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Ensure smooth transitions during scroll */
+  .scroll-smooth {
+    scroll-behavior: smooth;
+  }
 }
 
 /* Enhanced focus styles */
@@ -131,6 +154,25 @@ html {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Optimize animations for smooth scrolling */
+.animate-on-scroll {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Smooth section transitions */
+section {
+  scroll-margin-top: 2rem;
+  will-change: transform;
+}
+
+/* Optimize motion elements */
+[data-motion] {
+  will-change: transform, opacity;
+  transform: translateZ(0);
 }
 
 /* Gradient text animation */

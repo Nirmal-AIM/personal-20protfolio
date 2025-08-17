@@ -3,7 +3,7 @@ import { ChevronDown, Sparkles, Code, Zap } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden animate-on-scroll">
       {/* Enhanced animated background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-secondary/20" />
       
