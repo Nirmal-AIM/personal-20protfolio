@@ -146,7 +146,7 @@ export default function HeroSection() {
               >
                                  <div className="flex items-center justify-center gap-3 mb-3">
                    <motion.div
-                     animate={{ rotate: 360 }}
+                     animate={{ rotate: 270 }}
                      transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                    >
                      <Code className="w-6 h-6 text-primary" />
