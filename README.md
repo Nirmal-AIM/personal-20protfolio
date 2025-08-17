@@ -4,7 +4,7 @@ Welcome to my professional portfolio website! I'm **Nirmal Kollipara**, a **Youn
 
 ## 🔗 Portfolio Live Link
 
-👉 [https://beamish-sable-7f34fe.netlify.app](https://beamish-sable-7f34fe.netlify.app)
+👉https://nirmal-portfolios.netlify.app/
 
 ---
 
@@ -51,7 +51,7 @@ Welcome to my professional portfolio website! I'm **Nirmal Kollipara**, a **Youn
 - 📧 Email: [nirmalkollipara8688@gmail.com](mailto:nirmalkollipara8688@gmail.com)  
 - 🔗 [LinkedIn](https://www.linkedin.com/in/nirmal-kollipara-910230311/)  
 - 💻 [GitHub](https://github.com/Nirmal-AIM)
-
+- 🌐 [portfolio](https://nirmal-portfolios.netlify.app/)
 ---
 
 ## 📜 License
