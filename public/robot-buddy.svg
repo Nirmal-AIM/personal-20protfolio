@@ -1,0 +1,69 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="200" height="200" fill="black"/>
+  
+  <!-- Robot Body -->
+  <g id="robot">
+    <!-- Head -->
+    <ellipse cx="100" cy="70" rx="35" ry="40" fill="white" stroke="#8B5CF6" stroke-width="2"/>
+    <rect x="75" y="50" width="50" height="25" rx="5" fill="#1F2937"/>
+    <ellipse cx="85" cy="62" rx="4" ry="6" fill="#60A5FA"/>
+    <ellipse cx="115" cy="62" rx="4" ry="6" fill="#60A5FA"/>
+    
+    <!-- Antenna -->
+    <g id="antenna">
+      <path d="M100 30 L105 15 L95 15 Z" fill="#8B5CF6"/>
+      <circle cx="100" cy="15" r="3" fill="#60A5FA"/>
+      <circle cx="100" cy="15" r="1.5" fill="white"/>
+    </g>
+    
+    <!-- Ears -->
+    <ellipse cx="65" cy="70" rx="8" ry="12" fill="#8B5CF6"/>
+    <ellipse cx="135" cy="70" rx="8" ry="12" fill="#8B5CF6"/>
+    
+    <!-- Body -->
+    <rect x="75" y="110" width="50" height="60" rx="15" fill="white" stroke="#8B5CF6" stroke-width="2"/>
+    <circle cx="100" cy="130" r="8" fill="#8B5CF6"/>
+    
+    <!-- Arms -->
+    <g id="left-arm">
+      <rect x="45" y="120" width="25" height="8" rx="4" fill="white" stroke="#8B5CF6" stroke-width="2"/>
+      <rect x="40" y="125" width="8" height="15" rx="4" fill="white" stroke="#8B5CF6" stroke-width="2"/>
+    </g>
+    
+    <g id="right-arm">
+      <rect x="130" y="120" width="25" height="8" rx="4" fill="white" stroke="#8B5CF6" stroke-width="2"/>
+      <rect x="152" y="125" width="8" height="15" rx="4" fill="white" stroke="#8B5CF6" stroke-width="2"/>
+    </g>
+    
+    <!-- Legs -->
+    <rect x="85" y="170" width="8" height="20" rx="4" fill="white" stroke="#8B5CF6" stroke-width="2"/>
+    <rect x="107" y="170" width="8" height="20" rx="4" fill="white" stroke="#8B5CF6" stroke-width="2"/>
+    
+    <!-- Feet -->
+    <ellipse cx="89" cy="195" rx="6" ry="3" fill="white" stroke="#8B5CF6" stroke-width="2"/>
+    <ellipse cx="111" cy="195" rx="6" ry="3" fill="white" stroke="#8B5CF6" stroke-width="2"/>
+  </g>
+  
+  <!-- Glowing effects -->
+  <defs>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#60A5FA" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#60A5FA" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow-filter">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Glowing eyes -->
+  <circle cx="85" cy="62" r="8" fill="url(#glow)" opacity="0.6"/>
+  <circle cx="115" cy="62" r="8" fill="url(#glow)" opacity="0.6"/>
+  
+  <!-- Glowing antenna -->
+  <circle cx="100" cy="15" r="6" fill="url(#glow)" opacity="0.4"/>
+</svg>
