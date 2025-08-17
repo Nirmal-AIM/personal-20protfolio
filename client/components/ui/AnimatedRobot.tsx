@@ -15,14 +15,16 @@ export default function AnimatedRobot({
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
+  const easeInOutBezier: [number, number, number, number] = [0.42, 0, 0.58, 1];
+
   const robotVariants = {
     idle: {
       y: [0, -5, 0],
       transition: {
         duration: 2,
         repeat: Infinity,
-        ease: "easeInOut"
-      }
+        ease: easeInOutBezier,
+      },
     },
     hover: {
       y: [0, -10, 0],
@@ -30,16 +32,16 @@ export default function AnimatedRobot({
       transition: {
         duration: 1,
         repeat: Infinity,
-        ease: "easeInOut"
-      }
+        ease: easeInOutBezier,
+      },
     },
     click: {
       scale: [1, 0.95, 1],
       rotate: [0, 5, -5, 0],
       transition: {
-        duration: 0.3
-      }
-    }
+        duration: 0.3,
+      },
+    },
   };
 
   const antennaVariants = {
@@ -48,8 +50,8 @@ export default function AnimatedRobot({
       transition: {
         duration: 3,
         repeat: Infinity,
-        ease: "easeInOut"
-      }
+        ease: easeInOutBezier,
+      },
     },
     hover: {
       rotate: [0, 10, -10, 0],
@@ -57,9 +59,9 @@ export default function AnimatedRobot({
       transition: {
         duration: 1.5,
         repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
+        ease: easeInOutBezier,
+      },
+    },
   };
 
   const eyeVariants = {
@@ -69,8 +71,8 @@ export default function AnimatedRobot({
       transition: {
         duration: 2,
         repeat: Infinity,
-        ease: "easeInOut"
-      }
+        ease: easeInOutBezier,
+      },
     },
     hover: {
       scale: [1, 1.5, 1],
@@ -78,9 +80,9 @@ export default function AnimatedRobot({
       transition: {
         duration: 1,
         repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
+        ease: easeInOutBezier,
+      },
+    },
   };
 
   const armVariants = {
@@ -89,17 +91,17 @@ export default function AnimatedRobot({
       transition: {
         duration: 4,
         repeat: Infinity,
-        ease: "easeInOut"
-      }
+        ease: easeInOutBezier,
+      },
     },
     hover: {
       rotate: [0, 5, -5, 0],
       transition: {
         duration: 2,
         repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
+        ease: easeInOutBezier,
+      },
+    },
   };
 
   const handleClick = () => {
@@ -175,7 +177,7 @@ export default function AnimatedRobot({
               transition={{
                 duration: 2,
                 repeat: Infinity,
-                ease: "easeInOut"
+                ease: easeInOutBezier,
               }}
             />
             <circle cx="100" cy="15" r="1.5" fill="white"/>
@@ -215,7 +217,7 @@ export default function AnimatedRobot({
             transition={{
               duration: 3,
               repeat: Infinity,
-              ease: "easeInOut"
+              ease: easeInOutBezier,
             }}
           />
           
@@ -300,7 +302,7 @@ export default function AnimatedRobot({
           transition={{
             duration: 2,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: easeInOutBezier,
           }}
         />
         <motion.circle 
@@ -314,8 +316,8 @@ export default function AnimatedRobot({
           transition={{
             duration: 2,
             repeat: Infinity,
-            ease: "easeInOut",
-            delay: 0.5
+            ease: easeInOutBezier,
+            delay: 0.5,
           }}
         />
         
@@ -331,7 +333,7 @@ export default function AnimatedRobot({
           transition={{
             duration: 3,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: easeInOutBezier,
           }}
         />
       </svg>
