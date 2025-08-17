@@ -36,6 +36,7 @@
     "client/**/*",
     "server/**/*",
     "shared/**/*",
+    "netlify/functions/**/*",
     "vite.config.ts",
     "vite.config.server.ts"
   ],
