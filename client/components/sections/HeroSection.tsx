@@ -151,7 +151,7 @@ export default function HeroSection() {
         ))}
       </div>
 
-             <div className="container mx-auto px-4 sm:px-6 relative z-10 transform scale-[1.03] sm:scale-100 origin-top">
+             <div className="container mx-auto px-4 sm:px-6 relative z-10 transform scale-[1.06] sm:scale-100 origin-top">
          <div className="text-center space-y-6 sm:space-y-8">
            {/* Top section with robot and greeting */}
            <motion.div
