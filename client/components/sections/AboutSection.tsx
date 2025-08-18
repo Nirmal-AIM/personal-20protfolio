@@ -36,6 +36,51 @@ const achievements = [
   },
 ];
 
+// Build mobile icon list from local assets in `public/icons`
+const deriveLabelFromFilename = (filename: string): string => {
+  const withoutPrefix = filename.replace(/^\d+[-_]?/, "");
+  const withoutExt = withoutPrefix.replace(/\.(png|svg|jpg|jpeg)$/i, "");
+  const spaced = withoutExt.replace(/[-_]+/g, " ");
+  return spaced.charAt(0).toUpperCase() + spaced.slice(1);
+};
+
+const iconFiles = [
+  "001-python.png",
+  "002-java-script.png",
+  "003-code.png",
+  "004-typescript.png",
+  "005-visual-basic.png",
+  "006-code-1.png",
+  "007-c.png",
+  "008-mysql.png",
+  "011-swift.png",
+  "010-programmer.png",
+  "012-programming-language.png",
+  "013-programming.png",
+  "014-mysql-1.png",
+  "016-globe.png",
+  "017-php.png",
+  "018-python-1.png",
+  "019-program.png",
+  "020-programming-1.png",
+  "021-programming-language-1.png",
+  "022-hierarchical.png",
+  "023-cloud-programming.png",
+  "024-html-language.png",
+  "025-programming-2.png",
+  "026-idea.png",
+  "027-global.png",
+  "028-light-bulb.png",
+  "029-coding.png",
+  "030-code-3.png",
+  "031-natural-language-processing.png",
+];
+
+const technologyIcons = iconFiles.map((file) => ({
+  src: `/icons/${file}`,
+  label: deriveLabelFromFilename(file),
+}));
+
 export default function AboutSection() {
   return (
     <section id="about" className="py-20 lg:py-32 relative">
@@ -86,7 +131,8 @@ export default function AboutSection() {
               <h3 className="text-xl font-semibold mb-4 text-foreground">
                 Technologies I Work With
               </h3>
-              <div className="flex flex-wrap gap-3">
+              {/* Desktop/Tablet: text badges */}
+              <div className="hidden sm:flex flex-wrap gap-3">
                 {techStack.map((tech, index) => (
                   <motion.span
                     key={tech}
@@ -100,6 +146,24 @@ export default function AboutSection() {
                     {tech}
                   </motion.span>
                 ))}
+              </div>
+              {/* Mobile: animated row of icons */}
+              <div className="sm:hidden overflow-hidden mt-2">
+                <motion.div
+                  className="flex gap-4"
+                  animate={{ x: [0, -80, 0] }}
+                  transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  {technologyIcons.map((tech, index) => (
+                    <img
+                      key={`about-mobile-${index}`}
+                      src={tech.src}
+                      alt={tech.label}
+                      className="w-7 h-7 rounded-sm shadow-sm"
+                      loading="lazy"
+                    />
+                  ))}
+                </motion.div>
               </div>
             </div>
           </motion.div>

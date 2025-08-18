@@ -120,18 +120,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Subtle moving row of technology icons (mobile) */}
-      <div className="sm:hidden absolute bottom-28 left-0 right-0 z-0 overflow-hidden">
-        <motion.div
-          className="flex gap-4 px-6"
-          animate={{ x: [0, -60, 0] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        >
-          {technologyIcons.map((tech, index) => (
-            <img key={`mobile-${tech.src}-${index}`} src={tech.src} alt={tech.label} className="w-6 h-6 rounded-sm shadow-sm" loading="lazy" />
-          ))}
-        </motion.div>
-      </div>
+      
 
       {/* Enhanced floating particles animation */}
       <div className="absolute inset-0 overflow-hidden">
