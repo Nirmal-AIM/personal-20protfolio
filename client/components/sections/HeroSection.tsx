@@ -2,6 +2,51 @@ import { motion } from "framer-motion";
 import { ChevronDown, Sparkles, Code, Zap } from "lucide-react";
 
 export default function HeroSection() {
+  const deriveLabelFromFilename = (filename: string): string => {
+    const withoutPrefix = filename.replace(/^\d+[-_]?/, "");
+    const withoutExt = withoutPrefix.replace(/\.(png|svg|jpg|jpeg)$/i, "");
+    const spaced = withoutExt.replace(/[-_]+/g, " ");
+    return spaced.charAt(0).toUpperCase() + spaced.slice(1);
+  };
+
+  const iconFiles = [
+    "001-python.png",
+    "002-java-script.png",
+    "003-code.png",
+    "004-typescript.png",
+    "005-visual-basic.png",
+    "006-code-1.png",
+    "007-c.png",
+    "008-mysql.png",
+    "011-swift.png",
+    "010-programmer.png",
+    "011-swift.png",
+    "012-programming-language.png",
+    "013-programming.png",
+    "014-mysql-1.png",
+    "015-code-2.png",
+    "016-globe.png",
+    "017-php.png",
+    "018-python-1.png",
+    "019-program.png",
+    "020-programming-1.png",
+    "021-programming-language-1.png",
+    "022-hierarchical.png",
+    "023-cloud-programming.png",
+    "024-html-language.png",
+    "025-programming-2.png",
+    "026-idea.png",
+    "027-global.png",
+    "028-light-bulb.png",
+    "029-coding.png",
+    "030-code-3.png",
+    "031-natural-language-processing.png",
+  ];
+
+  const technologyIcons = iconFiles.map((file) => ({
+    src: `/icons/${file}`,
+    label: deriveLabelFromFilename(file),
+  }));
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden animate-on-scroll">
       {/* Enhanced animated background gradient */}
@@ -45,6 +90,47 @@ export default function HeroSection() {
             ease: "linear"
           }}
         />
+      </div>
+
+      {/* Orbiting technology icons (desktop/tablet) */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="hidden sm:block absolute right-[-100px] md:right-[-140px] top-1/2 -translate-y-1/2 z-0">
+          <motion.div
+            className="relative w-[280px] h-[280px] md:w-[360px] md:h-[360px]"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+          >
+            <div className="absolute inset-0 rounded-full border border-primary/10" />
+            {technologyIcons.slice(0, 10).map((tech, index) => {
+              const angle = (index / 10) * 360;
+              const radius = 130; // visual radius in px
+              return (
+                <div
+                  key={`${tech.src}-${index}`}
+                  className="absolute left-1/2 top-1/2"
+                  style={{
+                    transform: `rotate(${angle}deg) translate(${radius}px) rotate(${-angle}deg)`
+                  }}
+                >
+                  <img src={tech.src} alt={tech.label} className="w-7 h-7 md:w-9 md:h-9 rounded-sm shadow-sm" loading="lazy" />
+                </div>
+              );
+            })}
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Subtle moving row of technology icons (mobile) */}
+      <div className="sm:hidden absolute bottom-28 left-0 right-0 z-0 overflow-hidden">
+        <motion.div
+          className="flex gap-4 px-6"
+          animate={{ x: [0, -60, 0] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        >
+          {technologyIcons.map((tech, index) => (
+            <img key={`mobile-${tech.src}-${index}`} src={tech.src} alt={tech.label} className="w-6 h-6 rounded-sm shadow-sm" loading="lazy" />
+          ))}
+        </motion.div>
       </div>
 
       {/* Enhanced floating particles animation */}
