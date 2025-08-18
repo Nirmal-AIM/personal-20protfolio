@@ -83,7 +83,7 @@ const technologyIcons = iconFiles.map((file) => ({
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-20 lg:py-32 relative">
+    <section id="about" className="py-20 lg:py-32 relative transform scale-[0.99] sm:scale-100 origin-top">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
