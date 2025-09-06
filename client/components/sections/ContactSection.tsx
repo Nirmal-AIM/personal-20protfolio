@@ -194,7 +194,7 @@ export default function ContactSection() {
           >
             <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
               <MessageSquare className="w-6 h-6 text-primary" />
-              Send a Message
+              Let's work on your project
             </h3>
 
             <form onSubmit={handleSubmit} className="space-y-6">

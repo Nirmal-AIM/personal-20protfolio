@@ -1,5 +1,7 @@
-import { motion } from "framer-motion";
-import { ExternalLink, Github, Eye } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ExternalLink, Github, Eye, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
+import move from "lodash-move";
 
 const projects = [
   {
@@ -66,6 +68,48 @@ const projects = [
 ];
 
 export default function ProjectsSection() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [projectCards, setProjectCards] = useState(projects);
+  const [showHint, setShowHint] = useState(true);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const nextProject = () => {
+    if (isAnimating) return; // Prevent multiple clicks during animation
+    setIsAnimating(true);
+    setShowHint(false);
+    
+    // Trigger the drag-like animation
+    setTimeout(() => {
+      moveToEnd(0);
+      setTimeout(() => {
+        setIsAnimating(false);
+      }, 300); // Wait for animation to complete
+    }, 100);
+  };
+
+  const prevProject = () => {
+    if (isAnimating) return; // Prevent multiple clicks during animation
+    setIsAnimating(true);
+    setShowHint(false);
+    
+    // Trigger the drag-like animation
+    setTimeout(() => {
+      moveToEnd(0);
+      setTimeout(() => {
+        setIsAnimating(false);
+      }, 300); // Wait for animation to complete
+    }, 100);
+  };
+
+  const moveToEnd = (fromIndex) => {
+    console.log('Moving card from index:', fromIndex);
+    const newCards = move(projectCards, fromIndex, projectCards.length - 1);
+    setProjectCards(newCards);
+    setShowHint(false); // Hide hint after first interaction
+  };
+
+  const currentProject = projectCards[currentIndex];
+
   return (
     <section id="projects" className="mobile-section animate-on-scroll">
       <div className="mobile-container">
@@ -83,135 +127,295 @@ export default function ProjectsSection() {
             A showcase of recent work demonstrating expertise across various
             industries
           </p>
+          
+          {/* Interaction Instructions */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-sm text-muted-foreground"
+          >
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+              <span>Drag up or click arrows to explore</span>
+            </div>
+            <div className="hidden sm:block w-px h-4 bg-muted-foreground/30" />
+            <div className="flex items-center gap-2">
+              <ChevronLeft className="w-4 h-4" />
+              <ChevronRight className="w-4 h-4" />
+              <span>Both move cards to back</span>
+            </div>
+          </motion.div>
           <div className="w-16 sm:w-20 md:w-24 h-0.5 sm:h-1 bg-primary mx-auto rounded-full mt-4 sm:mt-6" />
         </motion.div>
 
-        <div className="mobile-grid">
-          {projects.map((project, index) => (
+        {/* Card Stack Container */}
+        <div className="relative flex items-center justify-center min-h-[600px] sm:min-h-[700px]">
+          {/* Floating Hint - Only shows for first-time users */}
+          {showHint && (
             <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 50, scale: 0.9 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ 
-                duration: 0.6, 
-                delay: index * 0.1,
-                type: "spring",
-                stiffness: 100
-              }}
-              viewport={{ once: true, margin: "-50px" }}
-              whileHover={{ 
-                y: -8,
-                scale: 1.02,
-                transition: { duration: 0.3 }
-              }}
-              className="mobile-card group relative"
+              initial={{ opacity: 0, y: 20, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -20, scale: 0.9 }}
+              transition={{ delay: 3, duration: 0.5 }}
+              className="absolute -top-16 left-1/2 -translate-x-1/2 z-30"
             >
-              {/* Glowing border effect on hover */}
-              <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-r from-primary/20 via-purple-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+              <div className="bg-primary text-white px-4 py-2 rounded-full shadow-lg text-sm font-medium whitespace-nowrap">
+                👆 Drag up or click arrows to explore more projects
+              </div>
+              <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-primary" />
+            </motion.div>
+          )}
+
+          {/* Background Cards for Stack Effect */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            {/* Card 3 - Furthest back */}
+            <div
+              className="absolute w-full max-w-md bg-white rounded-2xl shadow-lg border border-gray-200"
+              style={{
+                transform: 'translateY(-90px) scale(0.88)',
+                zIndex: 1,
+                height: '140px'
+              }}
+            />
+            
+            {/* Card 2 - Middle */}
+            <div
+              className="absolute w-full max-w-md bg-white rounded-2xl shadow-lg border border-gray-200"
+              style={{
+                transform: 'translateY(-50px) scale(0.94)',
+                zIndex: 2,
+                height: '200px'
+              }}
+            />
+            
+            {/* Card 1 - Closest to front */}
+            <div
+              className="absolute w-full max-w-md bg-white rounded-2xl shadow-lg border border-gray-200"
+              style={{
+                transform: 'translateY(-25px) scale(0.97)',
+                zIndex: 3,
+                height: '280px'
+              }}
+            />
+          </div>
+
+          {/* Card Stack */}
+          <div className="relative w-full max-w-md h-[500px]">
+            {projectCards.map((project, index) => {
+              const canDrag = index === 0;
+              const CARD_OFFSET = 12;
+              const SCALE_FACTOR = 0.04;
+
+              return (
+                <motion.div
+                  key={project.title}
+                  className="absolute w-full bg-white rounded-2xl shadow-2xl overflow-hidden"
+                  style={{
+                    height: '500px',
+                    transformOrigin: 'top center',
+                    cursor: canDrag ? 'grab' : 'default'
+                  }}
+                  animate={{
+                    y: index * CARD_OFFSET + (isAnimating && index === 0 ? -100 : 0),
+                    scale: 1 - index * SCALE_FACTOR + (isAnimating && index === 0 ? 0.02 : 0),
+                    rotate: isAnimating && index === 0 ? 2 : 0,
+                    zIndex: projectCards.length - index + (isAnimating && index === 0 ? 1000 : 0)
+                  }}
+                  drag={canDrag && !isAnimating ? "y" : false}
+                  dragConstraints={{
+                    top: -200,
+                    bottom: 0
+                  }}
+                  dragElastic={0.2}
+                  onDragEnd={(event, info) => {
+                    console.log('Drag ended with offset:', info.offset.y);
+                    if (info.offset.y < -80) {
+                      moveToEnd(index);
+                    }
+                  }}
+                  whileDrag={{ 
+                    scale: 1.02,
+                    rotate: 2,
+                    zIndex: 1000,
+                    cursor: 'grabbing',
+                    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: isAnimating ? 300 : 400,
+                    damping: isAnimating ? 20 : 25,
+                    duration: isAnimating ? 0.3 : undefined
+                  }}
+                >
+                  {/* Navigation Arrows - Only on top card */}
+                  {canDrag && (
+                    <div className="absolute top-4 left-4 right-4 flex justify-between items-center z-20">
+                      <motion.button
+                        onClick={prevProject}
+                        whileHover={{ scale: 1.1, rotate: -5 }}
+                        whileTap={{ scale: 0.9 }}
+                        animate={isAnimating ? { scale: 1.2, rotate: -10 } : {}}
+                        className="bg-primary/90 text-white p-2 rounded-full hover:bg-primary shadow-lg transition-all duration-200"
+                        aria-label="Move to previous project"
+                        title="Move to previous project"
+                        disabled={isAnimating}
+                      >
+                        <ChevronLeft className="w-4 h-4" />
+                      </motion.button>
+
+                      <motion.button
+                        onClick={nextProject}
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        whileTap={{ scale: 0.9 }}
+                        animate={isAnimating ? { scale: 1.2, rotate: 10 } : {}}
+                        className="bg-primary/90 text-white p-2 rounded-full hover:bg-primary shadow-lg transition-all duration-200"
+                        aria-label="Move to next project"
+                        title="Move to next project"
+                        disabled={isAnimating}
+                      >
+                        <ChevronRight className="w-4 h-4" />
+                      </motion.button>
+                    </div>
+                  )}
+
+                  {/* Drag Indicator - Only on top card */}
+                  {canDrag && !isAnimating && (
+                    <motion.div
+                      className="absolute top-16 left-1/2 -translate-x-1/2 z-20"
+                      animate={{
+                        y: [0, -5, 0],
+                        opacity: [0.6, 1, 0.6]
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      <div className="flex flex-col items-center gap-1 text-primary/80">
+                        <div className="flex gap-1">
+                          <div className="w-1 h-1 bg-primary rounded-full" />
+                          <div className="w-1 h-1 bg-primary rounded-full" />
+                          <div className="w-1 h-1 bg-primary rounded-full" />
+                        </div>
+                        <span className="text-xs font-medium">Drag up</span>
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {/* Animation Indicator - Shows during arrow animation */}
+                  {canDrag && isAnimating && (
+                    <motion.div
+                      className="absolute top-16 left-1/2 -translate-x-1/2 z-20"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                    >
+                      <div className="flex flex-col items-center gap-1 text-primary">
+                        <motion.div
+                          animate={{ rotate: 360 }}
+                          transition={{ duration: 0.5, repeat: Infinity, ease: "linear" }}
+                          className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full"
+                        />
+                        <span className="text-xs font-medium">Moving...</span>
+                      </div>
+                    </motion.div>
+                  )}
               
               {/* Project Image */}
-              <div className="relative overflow-hidden bg-secondary/20 aspect-video">
+                  <div className="relative h-52 sm:h-60 overflow-hidden">
                 <motion.img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-full object-cover"
                   onError={(e) => {
                     console.error('Image failed to load:', project.image);
                     e.currentTarget.src = '/placeholder.svg';
                   }}
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.3 }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    />
+                    
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                    
+                    {/* Category Badge */}
+                    <div className="absolute top-4 left-1/2 -translate-x-1/2">
+                      <span className="bg-primary text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg">
+                        {project.category}
+                      </span>
+                    </div>
 
-                {/* Enhanced Overlay Actions - Mobile Optimized */}
-                <div className="absolute inset-0 flex items-center justify-center gap-3 sm:gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {/* Action Buttons - Only on top card */}
+                    {canDrag && (
+                      <div className="absolute inset-0 flex items-center justify-center gap-3 opacity-0 hover:opacity-100 transition-opacity duration-300">
                   <motion.a
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
+                          whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    className="bg-primary text-primary-foreground p-2.5 sm:p-3 rounded-full hover:bg-primary/90 transition-colors shadow-lg touch-manipulation touch-target"
+                          className="bg-white/90 text-primary p-3 rounded-full hover:bg-white transition-colors shadow-lg"
                   >
-                    <Eye className="w-4 h-4 sm:w-5 sm:h-5" />
+                          <Eye className="w-5 h-5" />
                   </motion.a>
                   {project.github !== "#" && (
                     <motion.a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1, rotate: -5 }}
+                            whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
-                      className="bg-secondary text-secondary-foreground p-2.5 sm:p-3 rounded-full hover:bg-secondary/90 transition-colors shadow-lg touch-manipulation touch-target"
+                            className="bg-white/90 text-primary p-3 rounded-full hover:bg-white transition-colors shadow-lg"
                     >
-                      <Github className="w-4 h-4 sm:w-5 sm:h-5" />
+                            <Github className="w-5 h-5" />
                     </motion.a>
                   )}
                 </div>
-
-                {/* Enhanced Category Badge - Mobile Optimized */}
-                <motion.div 
-                  className="absolute top-2 sm:top-4 left-2 sm:left-4"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <span className="bg-primary/90 text-primary-foreground px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium backdrop-blur-sm shadow-lg">
-                    {project.category}
-                  </span>
-                </motion.div>
+                    )}
               </div>
 
-              {/* Project Content - Mobile Optimized */}
-              <div className="p-3 sm:p-4 md:p-6 relative z-10">
-                <motion.h3 
-                  className="text-lg sm:text-xl md:text-2xl font-bold text-foreground mb-2 sm:mb-3 group-hover:text-primary transition-colors duration-300 leading-tight"
-                  whileHover={{ x: 3 }}
-                  transition={{ duration: 0.2 }}
-                >
+                  {/* Project Content */}
+                  <div className="p-6 space-y-4">
+                    {/* Project Title */}
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-800 leading-tight">
                   {project.title}
-                </motion.h3>
+                    </h3>
 
-                <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-3 sm:mb-4 leading-relaxed">
+                    {/* Project Description */}
+                    <p className="text-gray-600 leading-relaxed text-sm sm:text-base line-clamp-3">
                   {project.description}
                 </p>
 
-                {/* Enhanced Tech Stack - Mobile Optimized */}
-                <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4 md:mb-6">
-                  {project.tech.map((tech, techIndex) => (
-                    <motion.span
+                    {/* Tech Stack */}
+                    <div className="flex flex-wrap gap-2">
+                      {project.tech.slice(0, 3).map((tech) => (
+                        <span
                       key={tech}
-                      className="bg-secondary/50 text-foreground px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm border border-border hover:border-primary/50 transition-colors"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ 
-                        duration: 0.3, 
-                        delay: techIndex * 0.1,
-                        type: "spring",
-                        stiffness: 200
-                      }}
-                      whileHover={{ 
-                        scale: 1.05,
-                        backgroundColor: "hsl(var(--primary) / 0.1)",
-                        borderColor: "hsl(var(--primary))"
-                      }}
+                          className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-medium border border-gray-200"
                     >
                       {tech}
-                    </motion.span>
+                        </span>
                   ))}
+                      {project.tech.length > 3 && (
+                        <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-medium border border-gray-200">
+                          +{project.tech.length - 3}
+                        </span>
+                      )}
                 </div>
 
-                {/* Enhanced Project Links - Mobile Optimized */}
-                <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4">
+                    {/* Project Links - Only on top card */}
+                    {canDrag && (
+                      <div className="flex gap-3 pt-2">
                   <motion.a
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.02, y: -1 }}
+                          whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="mobile-button bg-primary text-primary-foreground hover:bg-primary/90 flex items-center justify-center gap-2 flex-1 shadow-lg hover:shadow-xl text-sm sm:text-base"
+                          className="bg-primary text-white hover:bg-primary/90 flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm font-medium shadow-md hover:shadow-lg transition-all duration-200 flex-1"
                   >
-                    <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                          <ExternalLink className="w-4 h-4" />
                     Live Demo
                   </motion.a>
 
@@ -220,19 +424,46 @@ export default function ProjectsSection() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.02, y: -1 }}
+                            whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="mobile-button bg-secondary text-secondary-foreground hover:bg-secondary/90 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl text-sm sm:text-base"
+                            className="bg-gray-100 text-gray-700 hover:bg-gray-200 flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm font-medium shadow-md hover:shadow-lg transition-all duration-200"
                     >
-                      <Github className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                            <Github className="w-4 h-4" />
                       Code
                     </motion.a>
                   )}
                 </div>
+                    )}
               </div>
             </motion.div>
-          ))}
+              );
+            })}
+          </div>
         </div>
+
+        {/* Project Indicators */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="flex justify-center gap-2 mt-6 sm:mt-8"
+        >
+          {projectCards.map((_, index) => (
+            <motion.button
+              key={index}
+              onClick={() => setCurrentIndex(index)}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
+                index === 0 
+                  ? 'bg-primary scale-125' 
+                  : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+              }`}
+              aria-label={`Go to project ${index + 1}`}
+            />
+          ))}
+        </motion.div>
 
         {/* View More Button - Mobile Optimized */}
         <motion.div
