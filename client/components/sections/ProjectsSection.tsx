@@ -73,6 +73,8 @@ export default function ProjectsSection() {
   const [showHint, setShowHint] = useState(true);
   const [isAnimating, setIsAnimating] = useState(false);
 
+  console.log('ProjectsSection rendered with', projectCards.length, 'cards');
+
   const nextProject = () => {
     if (isAnimating) return; // Prevent multiple clicks during animation
     setIsAnimating(true);
@@ -109,6 +111,17 @@ export default function ProjectsSection() {
   };
 
   const currentProject = projectCards[currentIndex];
+
+  // Fallback if no projects
+  if (!projectCards || projectCards.length === 0) {
+    return (
+      <section id="projects" className="mobile-section animate-on-scroll">
+        <div className="mobile-container">
+          <h2>No projects available</h2>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="projects" className="mobile-section animate-on-scroll">
@@ -254,7 +267,8 @@ export default function ProjectsSection() {
                     <div className="absolute top-4 left-4 right-4 flex justify-between items-center z-20">
                       <motion.button
                         onClick={prevProject}
-                        whileHover={{ scale: 1.1, rotate: -5 }}
+                        whileHover={{ scale: 1.1, rotate: -
+                          5 }}
                         whileTap={{ scale: 0.9 }}
                         animate={isAnimating ? { scale: 1.2, rotate: -10 } : {}}
                         className="bg-primary/90 text-white p-2 rounded-full hover:bg-primary shadow-lg transition-all duration-200"
