@@ -3,6 +3,9 @@
   functions = "netlify/functions"
   publish = "dist/spa"
 
+[build.environment]
+  NODE_VERSION = "22.14.0"
+
 
 [functions]
   external_node_modules = ["express"]
